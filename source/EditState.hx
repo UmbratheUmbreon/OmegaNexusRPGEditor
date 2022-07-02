@@ -6,6 +6,7 @@ import flixel.FlxSprite;
 import flixel.FlxCamera;
 import flixel.FlxObject;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.effects.FlxFlicker;
 import flixel.text.FlxText;
 import flixel.math.FlxMath;
 import flixel.tweens.FlxEase;
@@ -13,7 +14,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.input.keyboard.FlxKey;
 
-class EditState extends FlxState
+class EditState extends TransitionState
 {
 	public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];
 	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];
@@ -199,25 +200,25 @@ class EditState extends FlxState
 				{
 					if (controls.UI_LEFT_P)
 					{
-						FlxG.sound.play(Paths.sound('cursorScroll'));
+						FlxG.sound.play(Paths.sound('cursorSelect'));
 						changeItem(-1);
 					}
 		
 					if (controls.UI_RIGHT_P)
 					{
-						FlxG.sound.play(Paths.sound('cursorScroll'));
+						FlxG.sound.play(Paths.sound('cursorSelect'));
 						changeItem(1);
 					}
 		
 					if (controls.UI_UP_P)
 					{
-						FlxG.sound.play(Paths.sound('cursorScroll'));
+						FlxG.sound.play(Paths.sound('cursorSelect'));
 						changeItem(2);
 					}
 		
 					if (controls.UI_DOWN_P)
 					{
-						FlxG.sound.play(Paths.sound('cursorScroll'));
+						FlxG.sound.play(Paths.sound('cursorSelect'));
 						changeItem(-2);
 					}
 		
@@ -225,14 +226,12 @@ class EditState extends FlxState
 					{
 						if (optionShit[curSelected] == 'donate')
 						{
-							CoolUtil.browserLoad('https://sex-mode');
+							//CoolUtil.browserLoad('https://sex-mode');
 						}
 						else
 						{
 							selectedSomethin = true;
-							FlxG.sound.play(Paths.sound('cursorScroll'));
-		
-							//if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+							FlxG.sound.play(Paths.sound('cursorSelect'));
 		
 							menuItems.forEach(function(spr:FlxSprite)
 							{
@@ -255,19 +254,19 @@ class EditState extends FlxState
 										switch (daChoice)
 										{
 											case 'story_mode':
-												TransitionState.switchState(new StoryMenuState());
+												//TransitionState.switchState(new StoryMenuState());
 											case 'freeplay':
-												TransitionState.switchState(new FreeplayState());
+												//TransitionState.switchState(new FreeplayState());
 											case 'credits':
-												TransitionState.switchState(new CreditsState());
+												//TransitionState.switchState(new CreditsState());
 											case 'options':
-												LoadingState.loadAndSwitchState(new options.OptionsState());
+												//LoadingState.loadAndSwitchState(new options.OptionsState());
 											case 'patch':
-												TransitionState.switchState(new PatchState());
+												//TransitionState.switchState(new PatchState());
 											case 'true':
-												TransitionState.switchState(new FreeplayState());
+												//TransitionState.switchState(new FreeplayState());
 											case 'optionstrue':
-												LoadingState.loadAndSwitchState(new options.OptionsState());
+												//LoadingState.loadAndSwitchState(new options.OptionsState());
 										}
 									});
 								}
